@@ -3,10 +3,15 @@
   "services": [
     {
       "name": "anthropic-demo",
-      "startCommand": "docker run -e ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY -v $HOME/.anthropic:/home/computeruse/.anthropic -p 5900:5900 -p 8501:8501 -p 6080:6080 -p 8080:8080 -it ghcr.io/anthropics/anthropic-quickstarts:computer-use-demo-latest",
+      "startCommand": "docker run -e ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY -e HOST=0.0.0.0 -v $HOME/.anthropic:/home/computeruse/.anthropic -p 5900:5900 -p 8501:8501 -p 6080:6080 -p 8080:8080 -it ghcr.io/anthropics/anthropic-quickstarts:computer-use-demo-latest",
       "envVars": {
         "ANTHROPIC_API_KEY": {
           "description": "Your Anthropic API key",
+          "required": true
+        },
+        "HOST": {
+          "value": "0.0.0.0",
+          "description": "The host the application should bind to",
           "required": true
         }
       },
